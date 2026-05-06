@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procap' NextGen · Blockchain &amp; IA · Avril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+--ink: #000000;
+--paper: #FFFFFF;
+--cream: #EEEEEE;
+--accent: #DA291C;
+--accent2: #000000;
+--gold: #575756;
+--muted: #63666A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { background:#FFFFFF !important; min-height:100%; }
+body { background:#FFFFFF !important; color:var(--ink); font-family:'Raleway','Georgia',sans-serif; font-size:15px; line-height:1.65; max-width:820px; margin:0 auto; padding:40px 24px 80px; text-align:justify; hyphens:auto; }
+
+/* Éléments non justifiés */
+h1,h2,h3,h4,h5,
+.masthead,.masthead-eyebrow,.masthead h1,
+.dateline-bar,.market-strip,.ticker-item,
+.alert-banner,.alert-label,
+.section-header,.section-header h2,
+.kicker,.deck,.tag,.agenda-date,
+.sources-block,.source-pill,.source-link,
+.stat-block .num,.stat-block .label,
+.footer,.footer p,.masthead-mini,.issue-badge { text-align:left; hyphens:none; }
+.masthead,.masthead h1,.masthead-eyebrow { text-align:center; }
+.stat-block .num { text-align:center; }
+.stat-block .label { text-align:center; }
+.stat-block p { text-align:left !important; hyphens:none; }
+p,.headline-story p,.col-story p,.story-card p,
+.feature-block p,.pullquote p { text-align:justify; hyphens:auto; }
+
+/* MASTHEAD */
+.masthead { text-align:center; border-top:4px solid var(–ink); border-bottom:4px solid var(–ink); padding:28px 0 22px; }
+.masthead::before { content:’’; display:block; border-top:1px solid var(–ink); margin-bottom:10px; }
+.masthead::after { content:’’; display:block; border-bottom:1px solid var(–ink); margin-top:10px; }
+.masthead-eyebrow { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(–muted); margin-bottom:8px; }
+.masthead h1 { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:52px; font-weight:600; letter-spacing:0px; line-height:1; text-transform:uppercase; white-space:nowrap; }
+.masthead h1 span { color:var(–accent); font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-weight:600; }
+.masthead-sub { font-family:‘Courier New’,monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(–muted); margin-top:8px; text-align:center; }
+.masthead-sub-line1 { display:block; }
+.masthead-sub-line2 { display:block; margin-top:3px; }
+
+/* DATELINE */
+.dateline-bar { display:flex; justify-content:space-between; align-items:center; padding:7px 0; margin-bottom:6px; font-family:‘Courier New’,monospace; font-size:9.5px; letter-spacing:1px; color:var(–muted); }
+
+/* MARKET STRIP */
+.market-strip { background:var(–ink); color:var(–paper); padding:10px 18px; display:flex; justify-content:space-around; align-items:center; margin:0 0 22px; flex-wrap:wrap; gap:8px; }
+.ticker-item { text-align:center; }
+.ticker-item .sym { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:2px; color:#aaa; display:block; }
+.ticker-item .val { font-family:‘Courier New’,monospace; font-size:13px; font-weight:500; display:block; line-height:1.3; }
+.ticker-item .chg { font-family:‘Courier New’,monospace; font-size:9.5px; }
+.up { color:#68d391; } .down { color:#fc8181; } .neutral { color:#fbd38d; }
+
+/* ALERT BANNER */
+.alert-banner { background:var(–accent); color:var(–paper); padding:10px 18px; margin-bottom:22px; display:flex; align-items:center; gap:12px; }
+.alert-banner .alert-label { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; background:var(–paper); color:var(–accent); padding:2px 7px; white-space:nowrap; }
+.alert-banner p { font-size:12.5px; font-weight:600; line-height:1.4; text-align:left; }
+
+/* SECTIONS */
+.section-header { border-top:3px solid var(–ink); border-bottom:1px solid var(–ink); padding:5px 0 4px; margin-bottom:16px; }
+.section-header.no-top { border-top:none; }
+.section-header h2 { font-family:‘Courier New’,monospace; font-size:10px; letter-spacing:4px; text-transform:uppercase; font-weight:500; }
+.section-header h2 span { color:var(–accent); }
+
+/* LAYOUT */
+.grid-main-side { display:grid; grid-template-columns:2fr 1fr; gap:0; }
+.grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.grid-3col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; }
+
+/* HEADLINE STORY */
+.headline-story { padding-right:28px; border-right:1px solid var(–ink); }
+.headline-story .kicker { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(–accent); margin-bottom:6px; }
+.headline-story h3 { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:30px; font-weight:600; line-height:1.1; margin-bottom:12px; }
+.headline-story .deck { font-size:14px; font-weight:600; line-height:1.5; color:var(–accent2); margin-bottom:14px; font-style:italic; text-align:left; }
+.headline-story p { font-family:‘Raleway’,sans-serif; font-size:13.5px; line-height:1.7; color:#000000; margin-bottom:12px; }
+.col-story p { font-family:‘Raleway’,sans-serif; font-size:13px; line-height:1.7; color:#000000; margin-bottom:10px; }
+.story-card p { font-family:‘Raleway’,sans-serif; font-size:12.5px; line-height:1.65; color:#000000; }
+.feature-block p { font-family:‘Raleway’,sans-serif; font-size:12.5px; line-height:1.7; color:#EEEEEE; margin-bottom:8px; }
+.stat-block p { font-family:‘Raleway’,sans-serif; font-size:12px; line-height:1.55; color:#000000; text-align:left !important; hyphens:none; }
+.agenda-content p { font-family:‘Raleway’,sans-serif; font-size:11.5px; color:var(–muted); }
+.headline-story .deck { font-family:‘Raleway’,sans-serif; font-size:14px; font-weight:500; line-height:1.5; color:var(–accent2); margin-bottom:14px; font-style:italic; text-align:left; }
+
+/* SIDE COL */
+.side-col { padding-left:20px; }
+
+/* STORY CARDS */
+.story-card { padding:12px 0; border-bottom:1px solid #c8c0b0; }
+.story-card:last-child { border-bottom:none; }
+.story-card .kicker { font-family:‘Courier New’,monospace; font-size:8.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(–muted); margin-bottom:5px; }
+.story-card h4 { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:18px; font-weight:600; line-height:1.15; margin-bottom:6px; }
+.story-card p { font-size:12.5px; line-height:1.65; color:#000000; }
+
+/* RULES */
+.full-rule { border:none; border-top:2px solid var(–ink); margin:22px 0; }
+
+/* COL STORY */
+.col-story { padding:0 22px 0 0; border-right:1px solid var(–ink); }
+.col-story:last-child { border-right:none; padding-right:0; padding-left:22px; }
+.col-story .kicker { font-family:‘Courier New’,monospace; font-size:8.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(–accent); margin-bottom:6px; }
+.col-story h3 { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:22px; font-weight:600; line-height:1.15; margin-bottom:10px; }
+.col-story p { font-size:13px; line-height:1.7; color:#000000; margin-bottom:10px; }
+
+/* PULLQUOTE */
+.pullquote { border-left:4px solid var(–accent); padding:12px 16px; margin:14px 0; background:var(–cream); }
+.pullquote p { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:17px; font-style:italic; font-weight:600; line-height:1.35; color:var(–accent2); text-align:left; }
+.pullquote cite { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:1px; color:var(–muted); display:block; margin-top:6px; }
+
+/* FEATURE BLOCK */
+.feature-block { background:#DA291C; color:var(–paper); padding:22px 24px; margin:0 0; }
+.feature-block .kicker { font-family:‘Courier New’,monospace; font-size:8.5px; letter-spacing:3px; text-transform:uppercase; color:#9FA3A6; margin-bottom:8px; }
+.feature-block h3 { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:26px; font-weight:600; line-height:1.1; margin-bottom:10px; }
+.feature-block p { font-size:12.5px; line-height:1.7; color:#EEEEEE; margin-bottom:8px; }
+.feature-block ul { margin:8px 0 0 16px; }
+.feature-block ul li { font-size:12px; color:#EEEEEE; margin-bottom:5px; text-align:left; }
+
+/* STAT BLOCKS */
+.stat-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; margin-bottom:22px; }
+.stat-block { padding:0 16px 0 0; border-right:1px solid #c8c0b0; }
+.stat-block:last-child { border-right:none; padding-left:16px; padding-right:0; }
+.stat-block:nth-child(2) { padding:0 16px; }
+.stat-block .num { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:38px; font-weight:700; color:var(–accent); line-height:1; display:block; text-align:center; }
+.stat-block .label { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(–muted); display:block; margin-bottom:6px; text-align:center; }
+.stat-block p { font-size:12px; line-height:1.55; color:#000000; text-align:left !important; hyphens:none; }
+
+/* AGENDA */
+.agenda-item { display:flex; gap:14px; align-items:flex-start; padding:10px 0; border-bottom:1px solid #c8c0b0; }
+.agenda-item:last-child { border-bottom:none; }
+.agenda-date { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:1px; color:var(–paper); background:#DA291C; padding:3px 7px; white-space:nowrap; min-width:80px; text-align:center; margin-top:2px; }
+.agenda-date.hot { background:var(–accent); }
+.agenda-date.gold { background:var(–accent); }
+.agenda-content h5 { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:16px; font-weight:600; margin-bottom:2px; }
+.agenda-content p { font-size:11.5px; color:var(–muted); }
+
+/* TAGS */
+.tag { display:inline-block; font-family:‘Courier New’,monospace; font-size:8.5px; letter-spacing:1.5px; text-transform:uppercase; border:1px solid currentColor; padding:1px 5px; margin-right:4px; margin-bottom:4px; }
+.tag-reg { color:var(–accent2); } .tag-mkt { color:var(–accent); } .tag-tech { color:var(–gold); } .tag-ia { color:var(–gold); }
+
+/* LINKS */
+.sources-block { margin-top:10px; padding-top:8px; border-top:1px dashed #c8c0b0; display:flex; flex-wrap:wrap; gap:6px; }
+.source-pill { display:inline-flex; align-items:center; gap:4px; font-family:‘Courier New’,monospace; font-size:9px; color:var(–paper); background:#DA291C; text-decoration:none; padding:3px 8px; transition:background 0.2s; }
+.source-pill:hover { background:var(–accent); }
+.source-pill::before { content:’↗ ’; font-size:8px; }
+.source-link { display:inline-flex; align-items:center; gap:5px; font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(–accent2); text-decoration:none; border-bottom:1px solid var(–accent2); padding-bottom:1px; margin-top:6px; }
+.source-link:hover { color:var(–accent); border-color:var(–accent); }
+.source-link::before { content:’→ ’; }
+
+/* FOOTER */
+.footer { border-top:3px solid var(–ink); padding-top:16px; margin-top:32px; display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+.footer p { font-family:‘Courier New’,monospace; font-size:9px; letter-spacing:1px; color:var(–muted); line-height:1.7; }
+.masthead-mini { font-family:‘Barlow Condensed’,‘Georgia’,sans-serif; font-size:22px; font-weight:600; letter-spacing:0.5px; }
+.masthead-mini span { color:var(–accent); }
+
+@media (max-width:600px) {
+.grid-3col,.grid-2col,.grid-main-side,.stat-row { grid-template-columns:1fr; }
+.headline-story { padding-right:0; border-right:none; }
+.side-col { padding-left:0; border-top:1px solid var(–ink); margin-top:16px; padding-top:16px; }
+.col-story { padding:0 0 16px; border-right:none; border-bottom:1px solid var(–ink); }
+.col-story:last-child { padding-left:0; }
+.masthead h1 { font-size:36px; white-space:normal; }
+.alert-banner { flex-direction:column; gap:6px; }
+}
+</style>
+
+</head>
+<body style="background:#FFFFFF !important;">
+
+<!-- MASTHEAD -->
+
+<header class="masthead">
+<div class="masthead-eyebrow">La lettre mensuelle de la finance numérique · Blockchain &amp; IA</div>
+<h1>Procap' <span>NextGen</span></h1>
+<div class="masthead-sub">
+<span class="masthead-sub-line1">Blockchain · Digital Assets</span>
+<span class="masthead-sub-line2">Intelligence Artificielle</span>
+</div>
+</header>
+
+<!-- DATELINE -->
+
+<div class="dateline-bar">
+<span>Édition N° 03 — Avril 2026</span>
+<span>Europe · Monde</span>
+</div>
+<div style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:1px; color:var(--muted); margin-top:-20px; margin-bottom:22px; padding-bottom:6px;">
+Rédacteur : Jeremy FERASSE — Pôle Innovation et Développement
+</div>
+
+<!-- MARKET STRIP -->
+
+<div class="market-strip">
+<div class="ticker-item">
+<span class="sym">BTC/USD</span>
+<span class="val">~78 000 $</span>
+<span class="chg up">▲ Rebond en cours</span>
+</div>
+<div class="ticker-item">
+<span class="sym">ETH/USD</span>
+<span class="val">~1 800 $</span>
+<span class="chg neutral">◆ Consolidation</span>
+</div>
+<div class="ticker-item">
+<span class="sym">XRP/USD</span>
+<span class="val">~2,10 $</span>
+<span class="chg up">▲ Momentum haussier</span>
+</div>
+<div class="ticker-item">
+<span class="sym">STABLECOINS</span>
+<span class="val">316 Md $</span>
+<span class="chg neutral">◆ Liquidités record</span>
+</div>
+</div>
+
+<!-- À LA UNE BANNER -->
+
+<div style="background:#DA291C; color:#FFFFFF; text-align:center; padding:8px 0; margin-bottom:16px;">
+<span style="font-family:'Georgia',serif; font-size:16px; font-weight:700; letter-spacing:2px; text-transform:uppercase;">À la une</span>
+</div>
+
+<!-- ═══ SECTION 1 — BLOCKCHAIN & MARCHÉS ═══ -->
+
+<div class="section-header no-top">
+<h2>Blockchain <span>&amp;</span> Marchés · Bitcoin · ETF · Strategy · Goldman Sachs</h2>
+</div>
+
+<div class="grid-main-side" style="margin-bottom:22px;">
+<div class="headline-story">
+<div class="kicker">Dossier principal · Bitcoin · Adoption institutionnelle</div>
+<h3>Bitcoin à 78 000 $ : Goldman Sachs dépose son ETF et Strategy franchit 815 000 BTC</h3>
+<div class="deck">Le Bitcoin repart à la hausse après un début d'année difficile. L'adoption institutionnelle s'accélère avec Goldman Sachs et une semaine d'achats record de Strategy, tandis que les ETF dépassent 100 milliards de dollars de flux.</div>
+<p>L'amiral Samuel Paparo, commandant américain de l'Indo-Pacifique, a déclaré devant le Sénat que Bitcoin est un outil précieux de la projection de puissance américaine. Cette reconnaissance stratégique au plus haut niveau militaire coïncide avec un rebond du Bitcoin autour de 78 000 dollars, soutenu par un regain d'appétit institutionnel.</p>
+<p>Goldman Sachs a déposé le 14 avril 2026 un dossier d'enregistrement auprès de la SEC pour lancer le Goldman Sachs Bitcoin Premium Income ETF. Le produit vise les investisseurs cherchant des revenus mensuels et place au moins 80 % de ses actifs dans des ETF Bitcoin spot existants comme IBIT de BlackRock ou FBTC de Fidelity.</p>
+<div class="pullquote">
+<p>« Après un déclin régulier depuis juillet 2025, les taux d'adoption crypto américains ont rebondi en mars, passant de 7 % à 12 %. »</p>
+<cite>— Deutsche Bank, enquête retail, avril 2026</cite>
+</div>
+<p>Strategy a acquis 34 164 bitcoins pour environ 2,54 milliards de dollars entre le 13 et le 19 avril, à un prix moyen de 74 395 dollars par unité. Il s'agit de la plus importante semaine d'achat pour l'entreprise de Michael Saylor depuis novembre 2024. Ses réserves atteignent désormais 815 061 BTC, soit plus de 3,8 % de l'offre totale future de Bitcoin.</p>
+<div>
+<span class="tag tag-mkt">Bitcoin</span>
+<span class="tag tag-mkt">ETF</span>
+<span class="tag tag-mkt">Institutionnel</span>
+<span class="tag tag-reg">Goldman Sachs</span>
+</div>
+<div class="sources-block">
+<a href="https://cryptoast.fr/le-bitcoin-considere-comme-un-levier-de-rayonnement-de-la-puissance-americaine-recap-crypto-de-la-nuit-du-21-au-22-avril-2026/" target="_blank" class="source-pill">Cryptoast — Bitcoin puissance US</a>
+<a href="https://coinacademy.fr/actu/coin-hebdo-235/" target="_blank" class="source-pill">CoinAcademy — Coin Hebdo #235</a>
+<a href="https://www.coindesk.com/markets/2026/04/20/u-s-crypto-adoption-is-rebounding-bitcoin-still-dominates-deutsche-bank-says" target="_blank" class="source-pill">CoinDesk — Deutsche Bank Survey</a>
+</div>
+</div>
+
+<div class="side-col">
+<div class="section-header" style="border-top:1px solid var(--ink);">
+<h2>En bref</h2>
+</div>
+<div class="story-card">
+<div class="kicker">DeFi · Sécurité</div>
+<h4>Kelp DAO : 292 millions $ volés, la DeFi paralysée</h4>
+<p>Une attaque sophistiquée contre un bridge cross-chain a exploité une faille de configuration unique, volant 292 millions de dollars en rsETH et paralysant le protocole Aave ainsi que l'ensemble de la DeFi. Le plus grand exploit de l'année rappelle les risques structurels de l'écosystème décentralisé.</p>
+</div>
+<div class="story-card">
+<div class="kicker">Sécurité · France</div>
+<h4>41 crypto-rapts en France depuis janvier 2026</h4>
+<p>La France recense 41 enlèvements et séquestrations liés aux cryptomonnaies depuis le 1er janvier 2026. Lors de la Paris Blockchain Week, le ministre Jean-Didier Berger a annoncé une plateforme de prévention contre ces « wrench attacks ».</p>
+</div>
+<div class="story-card">
+<div class="kicker">Blockchain · IA · Sécurité</div>
+<h4>Ledger crée un Chief Human Agency Officer</h4>
+<p>Ledger a publié sa feuille de route AI Security 2026 et crée un poste inédit : Chief Human Agency Officer. L'entreprise se positionne désormais comme infrastructure de sécurité pour les agents IA qui envoient des transactions sans humain derrière.</p>
+</div>
+<div class="story-card">
+<div class="kicker">Crypto · USA · Régulation</div>
+<h4>PACE Act : licence nationale pour les fintech crypto</h4>
+<p>Des élus américains ont présenté le PACE Act, un projet de loi bipartisan visant à instaurer une licence nationale de paiements pour les fintech et crypto, placée sous la supervision de l'OCC — ouvrant la voie à des services fédéraux unifiés.</p>
+</div>
+</div>
+</div>
+
+<hr class="full-rule">
+
+<!-- ═══ SECTION 2 — EUROPE & RÉGULATION CRYPTO ═══ -->
+
+<div class="section-header">
+<h2>Europe <span>&amp;</span> Régulation · MiCA · Paris Blockchain Week · Quantum</h2>
+</div>
+
+<div class="grid-2col" style="margin-bottom:22px;">
+<div class="col-story">
+<div class="kicker">Paris Blockchain Week · Avril 2026 · Carrousel du Louvre</div>
+<h3>Paris Blockchain Week 2026 : la France affirme son leadership européen</h3>
+<p>La Paris Blockchain Week s'est tenue les 15 et 16 avril au Carrousel du Louvre, réunissant plus de 10 000 décideurs institutionnels. L'événement a confirmé Paris comme premier hub européen des actifs numériques, avec des représentants de BlackRock, JPMorgan, Goldman Sachs et de la BCE.</p>
+<p>Au-delà des annonces institutionnelles, la sécurité physique des détenteurs de crypto a dominé les discussions françaises, avec la présentation d'une plateforme gouvernementale de prévention contre les enlèvements liés aux cryptomonnaies — signe de la maturité et des nouveaux risques de l'écosystème.</p>
+<div>
+<span class="tag tag-reg">MiCA</span>
+<span class="tag tag-mkt">Paris</span>
+<span class="tag tag-tech">Hub européen</span>
+</div>
+<div class="sources-block">
+<a href="https://journalducoin.com/actualites/41-crypto-rapts-2026-france-prendre-mesures-contre-enlevements-violents/" target="_blank" class="source-pill">Journal du Coin — Crypto-rapts France</a>
+</div>
+</div>
+<div class="col-story">
+<div class="kicker">Quantum · Bitcoin · Sécurité cryptographique</div>
+<h3>La proposition anti-quantique de Bitcoin divise la communauté</h3>
+<p>La proposition anti-quantique de Bitcoin divise : Charles Hoskinson dénonce un hard fork déguisé. Le débat oppose les partisans d'une migration préventive vers des algorithmes résistants aux ordinateurs quantiques, et ceux qui estiment que la menace reste lointaine et que toute modification profonde du protocole représente un risque supérieur.</p>
+<p>Le sujet est d'autant plus sensible que les grandes institutions financières commencent à intégrer la résilience post-quantique dans leurs propres roadmaps de sécurité, créant une pression indirecte sur l'écosystème Bitcoin.</p>
+<div>
+<span class="tag tag-tech">Quantum</span>
+<span class="tag tag-tech">Bitcoin</span>
+<span class="tag tag-reg">Sécurité</span>
+</div>
+<div class="sources-block">
+<a href="https://coinacademy.fr/actu/coin-hebdo-235/" target="_blank" class="source-pill">CoinAcademy — Coin Hebdo #235</a>
+</div>
+</div>
+</div>
+
+<!-- FEATURE BLOCK -->
+
+<div class="feature-block" style="margin-bottom:22px;">
+<div class="kicker">PwC France · Bittensor · Blockchain IA · Actifs tokenisés</div>
+<h3>PwC France s'allie à Manako pour déployer l'IA physique en entreprise sur Bittensor</h3>
+<p>PwC France s'allie à Manako pour déployer l'IA physique en entreprise sur la blockchain Bittensor. Cette alliance symbolise la convergence entre IA décentralisée et grands cabinets de conseil — signal fort de la maturité institutionnelle des infrastructures blockchain dédiées à l'IA.</p>
+<ul>
+<li><strong>Bittensor :</strong> réseau décentralisé d'intelligence artificielle permettant aux modèles de s'entraîner et de monétiser leurs capacités sur une infrastructure blockchain</li>
+<li><strong>Enjeu :</strong> déploiement d'agents IA en entreprise avec traçabilité on-chain des décisions et des données utilisées</li>
+<li><strong>Signal :</strong> les acteurs du conseil traditionnels s'emparent de la convergence IA + blockchain comme nouveau terrain de croissance</li>
+</ul>
+</div>
+
+<hr class="full-rule">
+
+<!-- ═══ SECTION 3 — INTELLIGENCE ARTIFICIELLE ═══ -->
+
+<div class="section-header">
+<h2>Intelligence <span>Artificielle</span> · Modèles · AI Act · France · Agents</h2>
+</div>
+
+<div class="grid-main-side" style="margin-bottom:22px;">
+<div class="headline-story">
+<div class="kicker">Tour d'horizon · Avril 2026 · France &amp; Europe</div>
+<h3>L'IA s'industrialise : Claude Opus 4.7, AI Act et la France premier écosystème européen</h3>
+<div class="deck">En avril 2026, l'IA franchit un nouveau seuil : les modèles s'affinent, la réglementation entre dans sa phase contraignante et la France confirme sa position de leader européen avec 1 114 start-up actives.</div>
+<p>Le 16 avril 2026, Anthropic a lancé Claude Opus 4.7, son modèle phare de nouvelle génération. Opus 4.7 constitue une amélioration notable sur Opus 4.6 en ingénierie logicielle avancée, avec des gains particulièrement marqués sur les tâches les plus difficiles. Dans le même temps, Carrefour, Société Générale et Renault Digital ont annoncé des partenariats stratégiques avec Google Cloud AI, confirmant l'industrialisation des usages IA dans les grands groupes français.</p>
+<p>Le mapping 2026 de France Digitale recense 1 114 start-up françaises développant des produits ou services intégrant l'IA, contre 935 pour l'Allemagne. La France devient premier écosystème européen en nombre d'acteurs. Les levées totalisent près de 16 milliards d'euros depuis la création des entreprises, en hausse de 23 % par rapport à 2024.</p>
+<div class="pullquote">
+<p>« L'IA pour les entreprises en 2026 n'est plus un sujet d'innovation. C'est un outil de production. »</p>
+<cite>— France Digitale / Koudeclat, avril 2026</cite>
+</div>
+<p>En 2026, plusieurs obligations de l'AI Act deviennent pleinement applicables, notamment pour les systèmes classés à risque élevé. Les entreprises qui n'auront pas anticipé leur mise en conformité s'exposeront à des sanctions financières significatives et à un risque réputationnel difficile à absorber.</p>
+<div>
+<span class="tag tag-ia">AI Act</span>
+<span class="tag tag-ia">Claude Opus 4.7</span>
+<span class="tag tag-ia">France IA</span>
+<span class="tag tag-tech">Agents</span>
+</div>
+<div class="sources-block">
+<a href="https://www.silicon.fr/business-1367/les-benchmarks-de-lit-2026-les-plateformes-dintelligence-artificielle-dia-generative-226704/amp" target="_blank" class="source-pill">Silicon.fr — Benchmarks IA 2026</a>
+<a href="https://www.quillet-digital.com/actualite-du-web/ai-act-france-entreprises-2026" target="_blank" class="source-pill">Quillet Digital — AI Act France</a>
+<a href="https://alain.goudey.eu/side/2026/04/18/weekly-ia-s-16-lintelligence-artificielle-en-entreprise-en-6-actus/" target="_blank" class="source-pill">Side Blog — Weekly IA S.16</a>
+</div>
+</div>
+
+<div class="side-col">
+<div class="section-header" style="border-top:1px solid var(--ink);">
+<h2>En pratique</h2>
+</div>
+<div class="story-card">
+<div class="kicker">Agents IA · Sécurité · Accès</div>
+<h4>Protéger les agents IA : Curity lance Access Intelligence</h4>
+<p style="font-size:12px;">L'entreprise suédoise Curity lance le service Access Intelligence, proposant une gestion des accès à la volée en intégrant des éléments de contexte pour protéger les agents IA. La gestion des identités des agents autonomes devient un enjeu critique pour les DSI.</p>
+</div>
+<div class="story-card">
+<div class="kicker">IA · Entreprise · Budget</div>
+<h4>62 % des organisations consacrent moins de 1 % de leur budget IT à l'IA</h4>
+<p style="font-size:12px;">Malgré les discours officiels, 62 % des organisations consacrent moins de 1 % de leur budget IT à l'IA. Un écart révélateur entre ambition stratégique et réalité d'investissement — et un signal pour les acteurs du conseil et de la transformation digitale.</p>
+</div>
+<div class="story-card">
+<div class="kicker">IA · Finance · Emploi</div>
+<h4>L'impact de l'IA sur l'emploi : le seuil des 30 %</h4>
+<p style="font-size:12px;">Une étude de Coface révèle qu'à partir de 30 % des tâches métiers automatisables, l'emploi est significativement affecté. Le secteur financier, avec ses nombreuses tâches répétitives de back-office, est particulièrement exposé à cette dynamique de transformation.</p>
+</div>
+<div class="story-card">
+<div class="kicker">Stanford · Rapport IA 2026</div>
+<h4>AI Index 2026 : l'IA dépasse les prévisions</h4>
+<p style="font-size:12px;">Le Stanford Institute for Human-Centered AI a publié son AI Index Report 2026, confirmant que les capacités des modèles progressent à un rythme supérieur aux prévisions, avec une accélération notable des agents autonomes et de l'IA spécialisée par secteur.</p>
+</div>
+</div>
+</div>
+
+<hr class="full-rule">
+
+<!-- CHIFFRES CLÉS BLOCKCHAIN -->
+
+<div class="section-header">
+<h2>Chiffres <span>clés</span> — Blockchain &amp; Crypto, Avril 2026</h2>
+</div>
+<div class="stat-row" style="margin-bottom:22px;">
+<div class="stat-block" style="text-align:center;">
+<span class="num">815 K</span>
+<span class="label">BTC détenus par Strategy</span>
+<p>Michael Saylor détient 815 061 BTC soit 3,8 % de l'offre totale future. La plus grande semaine d'achat depuis novembre 2024 : 34 164 BTC acquis pour 2,54 Md$ en une semaine.</p>
+</div>
+<div class="stat-block" style="text-align:center;">
+<span class="num">100 Md$</span>
+<span class="label">Flux estimés ETF Bitcoin</span>
+<p>Les ETF Bitcoin dépassent 100 milliards de dollars de flux cumulés. Goldman Sachs dépose à son tour un dossier ETF BTC auprès de la SEC — signal fort de l'institutionnalisation du marché.</p>
+</div>
+<div class="stat-block" style="text-align:center;">
+<span class="num">12 %</span>
+<span class="label">Adoption crypto USA · Mars 2026</span>
+<p>Rebond de l'adoption crypto aux États-Unis de 7 % à 12 % entre février et mars selon Deutsche Bank. Le Bitcoin reste le premier actif détenu, loin devant l'Ether et les altcoins.</p>
+</div>
+</div>
+
+<!-- CHIFFRES CLÉS IA -->
+
+<div class="section-header" style="margin-top:8px;">
+<h2>Chiffres <span>clés</span> — Intelligence Artificielle</h2>
+</div>
+<div class="stat-row" style="margin-bottom:22px;">
+<div class="stat-block" style="text-align:center;">
+<span class="num" style="color:var(--gold);">1 114</span>
+<span class="label">Start-up IA françaises · 2026</span>
+<p>La France devient le premier écosystème européen en nombre d'acteurs IA, devant l'Allemagne (935). Les levées de fonds totalisent 16 milliards d'euros depuis leur création, en hausse de 23 % sur un an.</p>
+</div>
+<div class="stat-block" style="text-align:center;">
+<span class="num" style="color:var(--gold);">71 %</span>
+<span class="label">Grandes entreprises FR · IA en prod.</span>
+<p>71 % des grandes entreprises françaises ont déployé au moins un cas d'usage d'IA générative en production à fin 2025, contre 28 % en 2023. Mais moins de 30 % de ces déploiements sont vraiment industrialisés.</p>
+</div>
+<div class="stat-block" style="text-align:center;">
+<span class="num" style="color:var(--gold);">5,2 Md€</span>
+<span class="label">Marché IA France · 2026</span>
+<p>Le marché de l'IA en France est estimé à 5,2 milliards d'euros en 2026. L'IA générative représente le principal point d'entrée : 89 % des entreprises qui utilisent l'IA ont commencé par elle.</p>
+</div>
+</div>
+
+<hr class="full-rule">
+
+<!-- AGENDA -->
+
+<div class="section-header">
+<h2>Agenda <span>·</span> Rendez-vous Mai–Juin 2026</h2>
+</div>
+<div style="margin-bottom:22px;">
+<div class="agenda-item">
+<span class="agenda-date hot">27-29 AVR</span>
+<div class="agenda-content">
+<h5>Bitcoin 2026 — Venetian, Las Vegas</h5>
+<p>Plus de 35 000 participants attendus pour la plus grande conférence Bitcoin au monde. Focus : adoption institutionnelle, Lightning Network, mining post-IA. Kevin Warsh et les perspectives Fed très attendus.</p>
+</div>
+</div>
+<div class="agenda-item">
+<span class="agenda-date">MAI 2026</span>
+<div class="agenda-content">
+<h5>Consensus 2026 — Austin, Texas</h5>
+<p>Le rendez-vous annuel de l'industrie blockchain réunissant plus de 20 000 professionnels. Thèmes majeurs : tokenisation des actifs réels (RWA), stablecoins réglementés et IA on-chain.</p>
+</div>
+</div>
+<div class="agenda-item">
+<span class="agenda-date">JUIN 2026</span>
+<div class="agenda-content">
+<h5>VivaTech — Paris · IA &amp; Innovation</h5>
+<p>Le salon européen de l'innovation réunit les leaders mondiaux de la tech. L'IA générative, les agents autonomes et la souveraineté numérique européenne seront au cœur des débats 2026.</p>
+</div>
+</div>
+<div class="agenda-item">
+<span class="agenda-date gold">2026</span>
+<div class="agenda-content">
+<h5>AI Act — Obligations systèmes à haut risque applicables</h5>
+<p>Les obligations concernant les systèmes d'IA à haut risque deviennent pleinement applicables en 2026. Les entreprises françaises doivent avoir complété leur mise en conformité — audit des usages, classification des risques, documentation.</p>
+</div>
+</div>
+<div class="agenda-item">
+<span class="agenda-date">T3 2026</span>
+<div class="agenda-content">
+<h5>MiCA — Supervision complète des CASPs</h5>
+<p>La supervision complète des prestataires de services sur crypto-actifs (CASPs) sous MiCA sera pleinement opérationnelle. Les agréments AMF devront être finalisés et les obligations de reporting actives.</p>
+</div>
+</div>
+</div>
+
+<hr class="full-rule">
+
+<!-- SOURCES -->
+
+<div class="section-header">
+<h2>Sources <span>·</span> Références du mois</h2>
+</div>
+<div style="margin-bottom:22px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+<div>
+<p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; text-align:left;">Blockchain &amp; Crypto</p>
+<div style="display:flex; flex-direction:column; gap:5px;">
+<a href="https://cryptoast.fr" target="_blank" class="source-link" style="display:inline-block;">cryptoast.fr</a>
+<a href="https://coinacademy.fr" target="_blank" class="source-link" style="display:inline-block;">coinacademy.fr</a>
+<a href="https://journalducoin.com" target="_blank" class="source-link" style="display:inline-block;">journalducoin.com</a>
+<a href="https://www.coindesk.com" target="_blank" class="source-link" style="display:inline-block;">coindesk.com</a>
+</div>
+</div>
+<div>
+<p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; text-align:left;">Intelligence Artificielle</p>
+<div style="display:flex; flex-direction:column; gap:5px;">
+<a href="https://www.silicon.fr" target="_blank" class="source-link" style="display:inline-block;">silicon.fr</a>
+<a href="https://www.lemondeinformatique.fr" target="_blank" class="source-link" style="display:inline-block;">lemondeinformatique.fr</a>
+<a href="https://alain.goudey.eu/side" target="_blank" class="source-link" style="display:inline-block;">Side Blog — Weekly IA</a>
+<a href="https://hai.stanford.edu" target="_blank" class="source-link" style="display:inline-block;">Stanford HAI — AI Index 2026</a>
+</div>
+</div>
+<div>
+<p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; text-align:left;">Régulation &amp; Finance</p>
+<div style="display:flex; flex-direction:column; gap:5px;">
+<a href="https://www.amf-france.org" target="_blank" class="source-link" style="display:inline-block;">amf-france.org</a>
+<a href="https://www.quillet-digital.com" target="_blank" class="source-link" style="display:inline-block;">quillet-digital.com</a>
+<a href="https://www.pymnts.com" target="_blank" class="source-link" style="display:inline-block;">pymnts.com</a>
+<a href="https://www.theblock.co" target="_blank" class="source-link" style="display:inline-block;">theblock.co</a>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+<div>
+<div class="masthead-mini">Procap' <span>NextGen</span></div>
+<p style="margin-top:6px;">Newsletter mensuelle · Édition N° 03 · Avril <span style="color:#DA291C;">2026</span></p>
+<p>Blockchain · Digital Assets · Intelligence Artificielle</p>
+</div>
+</footer>
+
+</body>
+</html>
